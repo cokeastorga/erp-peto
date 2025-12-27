@@ -1,6 +1,7 @@
-import { redirect } from 'next/navigation';
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  // En cuanto alguien entre a la web, lo mandamos al dashboard
-  redirect('/dashboard');
+  // Redirigimos inmediatamente al dashboard.
+  // El middleware se encargará de pedir login si no hay sesión.
+  redirect("/dashboard");
 }
