@@ -1,0 +1,52 @@
+# ------------------------------------------------------------------------------
+# Dependencias y Logs
+# ------------------------------------------------------------------------------
+/node_modules
+/.pnp
+.pnp.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ------------------------------------------------------------------------------
+# Next.js - Build y Cache
+# ------------------------------------------------------------------------------
+# Carpeta de build de producción
+/.next/
+# Exportaciones estáticas
+/out/
+
+# ------------------------------------------------------------------------------
+# Seguridad y Variables de Entorno (¡CRÍTICO!)
+# ------------------------------------------------------------------------------
+# Ignoramos todos los archivos .env locales para no subir keys privadas
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# EXCEPCIÓN: Permitimos subir un archivo de ejemplo para que el equipo sepa qué vars crear
+!.env.example
+
+# ------------------------------------------------------------------------------
+# TypeScript y Testing
+# ------------------------------------------------------------------------------
+*.tsbuildinfo
+next-env.d.ts
+/coverage
+
+# ------------------------------------------------------------------------------
+# Sistema Operativo y Editor (Basura que no queremos)
+# ------------------------------------------------------------------------------
+.DS_Store
+*.pem
+Thumbs.db
+.idea/
+.vscode/
+
+# ------------------------------------------------------------------------------
+# Vercel / Despliegue (Si usas Vercel para hosting)
+# ------------------------------------------------------------------------------
+.vercel
