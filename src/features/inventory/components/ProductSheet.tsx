@@ -41,17 +41,18 @@ interface ProductSheetProps {
 export function ProductSheet({ isOpen, onClose, productToEdit }: ProductSheetProps) {
   const { addProduct, updateProduct } = useInventoryStore();
 
-  const form = useForm<ProductFormValues>({
-    resolver: zodResolver(productSchema),
-    defaultValues: {
-      name: "",
-      sku: "",
-      category: "",
-      status: "active",
-      price: 0,
-      stock: 0,
-    },
-  });
+ // Quitamos <ProductFormValues> para que el resolver maneje la inferencia
+const form = useForm({
+  resolver: zodResolver(productSchema),
+  defaultValues: {
+    name: "",
+    sku: "",
+    category: "",
+    status: "active",
+    price: 0,
+    stock: 0,
+  },
+});
 
   useEffect(() => {
     if (productToEdit) {
