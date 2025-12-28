@@ -32,7 +32,13 @@ export function CustomerSheet({ isOpen, onClose, customerToEdit }: CustomerSheet
   const form = useForm({
     resolver: zodResolver(customerSchema),
     defaultValues: {
-      name: "", rut: "", email: "", phone: "", address: "", status: "active"
+      name: "",
+      rut: "",
+      email: "",
+      phone: "",
+      address: "",
+      // SOLUCIÓN: Forzamos a TS a entender que esto no es un string cualquiera, sino uno de los permitidos
+      status: "active" as "active" | "inactive", 
     },
   });
 
