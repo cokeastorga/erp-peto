@@ -10,7 +10,8 @@ import {
   LogOut, 
   ChevronLeft,
   Menu,
-  Settings
+  Settings,
+  ShoppingCart
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { cn } from "@/lib/utils";
@@ -38,6 +39,7 @@ export function Sidebar() {
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/inventory", label: "Inventario", icon: Package },
     { href: "/customers", label: "Clientes", icon: Users },
+    { href: "/sales", label: "Ventas (POS)", icon: ShoppingCart },
   ];
 
   return (
