@@ -41,18 +41,18 @@ interface ProductSheetProps {
 export function ProductSheet({ isOpen, onClose, productToEdit }: ProductSheetProps) {
   const { addProduct, updateProduct } = useInventoryStore();
 
- // Quitamos <ProductFormValues> para que el resolver maneje la inferencia
-const form = useForm({
-  resolver: zodResolver(productSchema),
-  defaultValues: {
-    name: "",
-    sku: "",
-    category: "",
-    status: "active",
-    price: 0,
-    stock: 0,
-  },
-});
+  // Quitamos <ProductFormValues> para que el resolver maneje la inferencia
+  const form = useForm({
+    resolver: zodResolver(productSchema),
+    defaultValues: {
+      name: "",
+      sku: "",
+      category: "",
+      status: "active",
+      price: 0,
+      stock: 0,
+    },
+  });
 
   useEffect(() => {
     if (productToEdit) {
@@ -92,7 +92,7 @@ const form = useForm({
         CLAVE 3: sm:max-w-lg define un ancho cómodo y profesional.
       */}
       <SheetContent className="w-full sm:max-w-lg p-0 flex flex-col h-full bg-white border-l border-slate-200 shadow-2xl">
-        
+
         {/* --- HEADER FIJO --- */}
         <SheetHeader className="px-6 py-5 border-b border-slate-100 bg-slate-50/50">
           <SheetTitle className="text-xl font-bold text-slate-900">
@@ -109,14 +109,14 @@ const form = useForm({
         <div className="flex-1 overflow-y-auto px-6 py-6">
           <Form {...form}>
             <form id="product-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              
+
               {/* Sección 1: Datos Básicos */}
               <div className="space-y-4">
                 <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
                   <div className="h-6 w-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">1</div>
                   Información General
                 </h3>
-                
+
                 <FormField
                   control={form.control}
                   name="name"
@@ -180,8 +180,12 @@ const form = useForm({
                         <div className="relative">
                           <span className="absolute left-3 top-2.5 text-slate-400 font-medium">$</span>
                           <FormControl>
-                            <Input type="number" {...field} className="pl-7 h-10 font-mono text-sm bg-slate-50/50 focus:bg-white" />
-                          </FormControl>
+                            <Input
+                              type="number"
+                              {...field}
+                              value={field.value as number} // <--- ESTA ES LA CORRECCIÓN
+                              className="pl-7 h-10 font-mono text-sm bg-slate-50/50 focus:bg-white"
+                            />                          </FormControl>
                         </div>
                         <FormMessage />
                       </FormItem>
@@ -194,8 +198,12 @@ const form = useForm({
                       <FormItem>
                         <FormLabel className="text-xs font-medium text-slate-500 uppercase">Stock Actual</FormLabel>
                         <FormControl>
-                          <Input type="number" {...field} className="h-10 font-mono text-sm bg-slate-50/50 focus:bg-white" />
-                        </FormControl>
+                          <Input
+                            type="number"
+                            {...field}
+                            value={field.value as number} // <--- LO MISMO AQUÍ
+                            className="h-10 font-mono text-sm bg-slate-50/50 focus:bg-white"
+                          />                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -241,8 +249,8 @@ const form = useForm({
             Cancelar
           </Button>
           {/* El botón submit se vincula al formulario mediante form="product-form" o simplemente onClick si está dentro del contexto */}
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             form="product-form" // Vincula este botón externo con el formulario de arriba
             className="h-10 px-6 bg-slate-900 hover:bg-slate-800 text-white shadow-lg shadow-slate-900/10"
           >
