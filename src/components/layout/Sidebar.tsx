@@ -5,7 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
   LayoutDashboard, 
-  Package, 
+  Package,
+  Users, 
   LogOut, 
   ChevronLeft,
   Menu,
@@ -36,6 +37,7 @@ export function Sidebar() {
   const menuItems = [
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/inventory", label: "Inventario", icon: Package },
+    { href: "/customers", label: "Clientes", icon: Users },
   ];
 
   return (
